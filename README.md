@@ -104,6 +104,8 @@ agent. The runnable scripts in [`examples/`](examples/) accompany these skills.
   limiter can be enabled with `enforce_rate_limit=True`.
 - Date fields use `YYYY-MM-DD` strings, matching the API.
 
+See [`CHANGELOG.md`](CHANGELOG.md) for release history.
+
 ## Disclaimer
 
 This SDK was written by an AI agent (pi) which, to its credit.
