@@ -1,5 +1,5 @@
 [project]
-name = "smartbill-sdk"
+name = "smartbill-rest-sdk"
 version = "1.0.0"
 description = "Python SDK (sync + async) for the SmartBill Cloud REST API."
 readme = "README.md"
