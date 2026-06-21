@@ -21,9 +21,9 @@ def test_payment_create_general_sync():
     r = c.payments.create(pay)
     assert r.series == "CHT"
     payload = json.loads(route.calls[0].request.read())
-    assert payload["payment"]["companyVatCode"] == "RO1"
-    assert payload["payment"]["type"] == "Ordin plata"
-    assert payload["payment"]["invoicesList"][0]["seriesName"] == "FCT"
+    assert payload["companyVatCode"] == "RO1"
+    assert payload["type"] == "Ordin plata"
+    assert payload["invoicesList"][0]["seriesName"] == "FCT"
     c.close()
 
 
@@ -128,7 +128,7 @@ def test_payment_bon_fiscal_received_fields_serialized():
     assert resp.id == "12345"
     assert resp.number == "12"
     payload = json.loads(route.calls[0].request.read())
-    assert payload["payment"]["receivedCash"] == 200
-    assert payload["payment"]["receivedCard"] == 60
-    assert payload["payment"]["returnFiscalPrinterText"] is True
+    assert payload["receivedCash"] == 200
+    assert payload["receivedCard"] == 60
+    assert payload["returnFiscalPrinterText"] is True
     c.close()

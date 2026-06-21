@@ -72,7 +72,7 @@ class InvoicesService:
             method="POST",
             base_url=self._exec.base_url,
             path="invoice",
-            json_body=_dump(invoice, "invoice"),
+            json_body=_dump(invoice, None),
             auth_header=self._exec.auth_header,
         )
 
@@ -188,7 +188,7 @@ class EstimatesService:
     def _create_request(self, estimate: Estimate) -> httpx.Request:
         return build_request(
             method="POST", base_url=self._exec.base_url, path="estimate",
-            json_body=_dump(estimate, "estimate"), auth_header=self._exec.auth_header,
+            json_body=_dump(estimate, None), auth_header=self._exec.auth_header,
         )
 
     def _delete_request(self, cif: str, series_name: str, number: str) -> httpx.Request:
@@ -265,7 +265,7 @@ class PaymentsService:
     def _create_request(self, payment: Payment) -> httpx.Request:
         return build_request(
             method="POST", base_url=self._exec.base_url, path="payment",
-            json_body=_dump(payment, "payment"), auth_header=self._exec.auth_header,
+            json_body=_dump(payment, None), auth_header=self._exec.auth_header,
         )
 
     def _delete_other_request(self, cif: str, **opts: Any) -> httpx.Request:
@@ -354,7 +354,7 @@ class EmailService:
     def _request(self, email: EmailDocument) -> httpx.Request:
         return build_request(
             method="POST", base_url=self._exec.base_url, path="document/send",
-            json_body=_dump(email, "sendDocumentRequest"), auth_header=self._exec.auth_header,
+            json_body=_dump(email, None), auth_header=self._exec.auth_header,
         )
 
     def send(self, email: EmailDocument) -> EmailResponse:

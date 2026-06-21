@@ -24,8 +24,8 @@ def test_email_send_sync():
     assert r.status.code == "0"
     assert "trimis" in r.status.message
     payload = json.loads(route.calls[0].request.read())
-    assert payload["sendDocumentRequest"]["companyVatCode"] == "RO1"
-    assert payload["sendDocumentRequest"]["type"] == "factura"
+    assert payload["companyVatCode"] == "RO1"
+    assert payload["type"] == "factura"
     c.close()
 
 

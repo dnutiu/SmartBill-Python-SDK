@@ -29,7 +29,7 @@ def test_estimate_create_sync():
     assert r.series == "PFC"
     assert r.number == "0001"
     payload = json.loads(route.calls[0].request.read())
-    assert payload["estimate"]["companyVatCode"] == "RO1"
+    assert payload["companyVatCode"] == "RO1"
     assert_auth(route.calls[0].request)
     c.close()
 

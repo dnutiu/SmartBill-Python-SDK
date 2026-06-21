@@ -22,6 +22,31 @@ client = SmartBillClient(username="you@example.com", token="...")
 Auth is HTTP Basic `username:token` (token from SmartBill Cloud →
 **Contul Meu → Integrari → API**). JSON only. Rate limit: 30 calls / 10s.
 
+## Draft chitante (ciornă)
+
+`Payment` accepts `is_draft` (API alias `isDraft`). This only applies to
+`type="Chitanta"`. When `is_draft=True` the chitanta is **saved but not
+finalized** — it gets **no number** and appears in SmartBill Cloud under
+**Rapoarte → Incasări** for a human to review and finalize. When
+`is_draft=False` (the default), the chitanta is finalized and `resp.number` /
+`resp.series` are populated.
+
+```python
+payment = Payment(
+    company_vat_code="RO12345678",
+    series_name="CHT",
+    value=260.0,
+    type="Chitanta",
+    is_draft=True,        # ← ciornă: saved, not finalized, no number
+    is_cash=True,
+)
+resp = client.payments.create(payment)
+# resp.number / resp.series are empty until finalized in SmartBill Cloud
+```
+
+`is_draft` is **not** meaningful for `type="Bon"` (fiscal receipts) — those
+are always issued immediately via the fiscal printer.
+
 ## The payments service
 
 `client.payments` (`PaymentsService`) exposes:

@@ -29,6 +29,21 @@ All date fields are `YYYY-MM-DD` strings. The SDK sends JSON only (no XML).
 SmartBill rate-limits to 30 calls / 10s → 403 for 10 min if exceeded; opt into
 a client-side preemptive limiter with `enforce_rate_limit=True`.
 
+## Drafts (ciornă)
+
+Both `Invoice` and `Estimate` accept `is_draft` (API alias `isDraft`). When
+`is_draft=True` the document is **saved but not finalized**: it gets **no
+series number** and is not officially issued. It shows up in SmartBill Cloud
+under **Rapoarte → Facturi / Proforme** so a human can review and finalize it
+there. When `is_draft=False` (the default), the document is finalized and a
+number is assigned — `resp.series` / `resp.number` are populated.
+
+```python
+invoice = Invoice(..., series_name="FCT", is_draft=True, ...)
+resp = client.invoices.create(invoice)
+# resp.number / resp.series are empty until finalized in SmartBill Cloud
+```
+
 ## Services available
 
 | Attribute        | Service              | Covers                                       |
@@ -69,7 +84,8 @@ with SmartBillClient(username="you@example.com", token="...") as client:
     print(resp.series, resp.number)  # series + assigned number
 ```
 
-Proformas use `Estimate` + `client.estimates.create(estimate)` — same shape.
+Proformas use `Estimate` + `client.estimates.create(estimate)` — same shape,
+and also support `is_draft=True` to save a proforma ciornă.
 
 ## Lifecycle: storno / cancel / restore / PDF (sync)
 

@@ -36,8 +36,8 @@ def test_invoice_create_sync():
     body = req.read()
     import json
     payload = json.loads(body)
-    assert payload["invoice"]["companyVatCode"] == "RO1"
-    assert payload["invoice"]["client"]["name"] == "X"
+    assert payload["companyVatCode"] == "RO1"
+    assert payload["client"]["name"] == "X"
     c.close()
 
 
