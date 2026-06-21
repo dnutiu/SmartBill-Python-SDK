@@ -124,7 +124,9 @@ def test_payment_bon_fiscal_received_fields_serialized():
     pay = Payment(company_vat_code="RO1", value=260, type="Bon", number="",
                   return_fiscal_printer_text=True, use_stock=False,
                   received_cash=200, received_card=60)
-    c.payments.create(pay)
+    resp = c.payments.create(pay)
+    assert resp.id == "12345"
+    assert resp.number == "12"
     payload = json.loads(route.calls[0].request.read())
     assert payload["payment"]["receivedCash"] == 200
     assert payload["payment"]["receivedCard"] == 60

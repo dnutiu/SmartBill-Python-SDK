@@ -69,7 +69,7 @@ from smartbill_sdk import AsyncSmartBillClient
 
 async def main():
     client = AsyncSmartBillClient(username="you@example.com", token="...")
-    taxes = await client.taxes.list("RO12345678")
+    taxes = await client.taxes.ataxes("RO12345678")
     print(taxes)
     await client.aclose()
 

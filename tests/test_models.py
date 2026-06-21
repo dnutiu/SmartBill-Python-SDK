@@ -78,6 +78,11 @@ def test_invoice_ref_aliasing():
     ref = InvoiceRef(series_name="FCT", number="14")
     assert ref.model_dump(by_alias=True) == {"seriesName": "FCT", "number": "14"}
 
+    # The GET /estimate/invoices response uses "series" rather than "seriesName".
+    parsed = InvoiceRef.model_validate({"series": "FCT", "number": "0028"})
+    assert parsed.series_name == "FCT"
+    assert parsed.number == "0028"
+
 
 def test_estimate_basic():
     est = Estimate(company_vat_code="RO1", client=Client(name="C"),

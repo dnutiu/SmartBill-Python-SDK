@@ -5,7 +5,7 @@ from __future__ import annotations
 from enum import Enum
 from typing import Optional, Union
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field
 
 
 class ModelConfig(BaseModel):
@@ -102,9 +102,18 @@ class Product(ModelConfig):
 
 
 class InvoiceRef(ModelConfig):
-    """Reference to an existing document (series + number)."""
+    """Reference to an existing document (series + number).
 
-    series_name: str = Field(..., alias="seriesName")
+    Requests use ``seriesName`` (e.g. ``invoicesList``), but the
+    ``GET /estimate/invoices`` response returns ``series``. Both names are
+    accepted during validation; serialization always emits ``seriesName``.
+    """
+
+    series_name: str = Field(
+        ...,
+        validation_alias=AliasChoices("seriesName", "series"),
+        serialization_alias="seriesName",
+    )
     number: str = Field(..., alias="number")
 
 

@@ -63,6 +63,11 @@ class EmailResponse(ModelConfig):
 
 
 class FiscalReceiptResponse(BaseResponse):
-    """Response for ``GET /payment/text`` (bon fiscal content, base64)."""
+    """Response for bon-fiscal endpoints.
+
+    Used by ``POST /payment`` when ``type='Bon'`` (the response includes the
+    generated receipt id) and by ``GET /payment/text`` (which returns the
+    base64-encoded fiscal-printer text in ``message``).
+    """
 
     id: Optional[Union[str, int]] = Field(None, alias="id")

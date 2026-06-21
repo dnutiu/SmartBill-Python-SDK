@@ -298,8 +298,8 @@ class PaymentsService:
             params={"cif": cif, "id": id}, auth_header=self._exec.auth_header,
         )
 
-    def create(self, payment: Payment) -> BaseResponse:
-        return _parse(self._exec.execute(self._create_request(payment)), BaseResponse)
+    def create(self, payment: Payment) -> FiscalReceiptResponse:
+        return _parse(self._exec.execute(self._create_request(payment)), FiscalReceiptResponse)
 
     def delete_other(self, cif: str, *, payment_type: str,
                      payment_date: Optional[str] = None,
@@ -321,8 +321,8 @@ class PaymentsService:
     def fiscal_receipt_text(self, cif: str, id: str) -> FiscalReceiptResponse:
         return _parse(self._exec.execute(self._receipt_text_request(cif, id)), FiscalReceiptResponse)
 
-    async def acreate(self, payment: Payment) -> BaseResponse:
-        return _parse(await self._exec.aexecute(self._create_request(payment)), BaseResponse)
+    async def acreate(self, payment: Payment) -> FiscalReceiptResponse:
+        return _parse(await self._exec.aexecute(self._create_request(payment)), FiscalReceiptResponse)
 
     async def adelete_other(self, cif: str, *, payment_type: str,
                             payment_date: Optional[str] = None,

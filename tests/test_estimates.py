@@ -90,8 +90,8 @@ def test_estimate_invoices_status_sync():
         return_value=httpx.Response(200, json=envelope(
             "sbcResponse",
             areInvoicesCreated=True,
-            invoices=[{"seriesName": "FCT", "number": "0028"},
-                      {"seriesName": "FCT", "number": "0036"}])))
+            invoices=[{"series": "FCT", "number": "0028"},
+                      {"series": "FCT", "number": "0036"}])))
     c = make_sync_client()
     r = c.estimates.invoices_status("RO1", "PFC", "0001")
     assert r.are_invoices_created is True
