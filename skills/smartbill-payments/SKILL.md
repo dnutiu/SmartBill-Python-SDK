@@ -1,17 +1,17 @@
 ---
 name: smartbill-payments
-description: Record payments and issue fiscal receipts (bon fiscal) via SmartBill using smartbill-sdk. POST /payment, payment types, mixed cash/card, fiscal-printer text, delete.
+description: Record payments and issue fiscal receipts (bon fiscal) via SmartBill using smartbill-rest-sdk. POST /payment, payment types, mixed cash/card, fiscal-printer text, delete.
 ---
 
 # SmartBill Payments & Fiscal Receipts
 
 Record payments against invoices and issue fiscal receipts (`bon fiscal`)
-with the `smartbill-sdk` Python package. Sync and async supported.
+with the `smartbill-rest-sdk` Python package (import as `smartbill_sdk`). Sync and async supported.
 
 ## Setup
 
 ```bash
-pip install smartbill-sdk
+pip install smartbill-rest-sdk
 ```
 
 ```python

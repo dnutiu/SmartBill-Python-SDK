@@ -1,11 +1,11 @@
-# Agent Skills for `smartbill-sdk`
+# Agent Skills for `smartbill-rest-sdk`
 
 These are [pi](https://github.com/earendil-works/pi-coding-agent) skills
 (`SKILL.md` files) that teach coding agents how to use this SDK. An agent
 imports a skill to get concise, copy-pasteable usage guidance for a given
 area of the API.
 
-Install the SDK first (`pip install smartbill-sdk`), then use any skill:
+Install the SDK first (`pip install smartbill-rest-sdk`), then use any skill:
 
 | Skill                  | Covers                                                                 |
 |------------------------|------------------------------------------------------------------------|

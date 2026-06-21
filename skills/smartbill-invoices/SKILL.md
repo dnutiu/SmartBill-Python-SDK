@@ -1,17 +1,17 @@
 ---
 name: smartbill-invoices
-description: Issue and manage SmartBill invoices (and proformas/estimates) via smartbill-sdk. Create, cancel, restore, storno, PDF, payment status — sync and async.
+description: Issue and manage SmartBill invoices (and proformas/estimates) via smartbill-rest-sdk. Create, cancel, restore, storno, PDF, payment status — sync and async.
 ---
 
 # SmartBill Invoices & Estimates
 
 Create, manage, and download SmartBill invoices and proformas (`estimates`)
-with the `smartbill-sdk` Python package. Covers sync and async usage.
+with the `smartbill-rest-sdk` Python package (import as `smartbill_sdk`). Covers sync and async usage.
 
 ## Setup
 
 ```bash
-pip install smartbill-sdk
+pip install smartbill-rest-sdk
 ```
 
 Auth is HTTP Basic with your SmartBill login e-mail and API token

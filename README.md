@@ -1,4 +1,4 @@
-# smartbill-sdk
+# smartbill-rest-sdk
 
 A Python SDK for the [SmartBill Cloud REST API](https://www.facturionline.ro/api-program-facturare/),
 offering both **synchronous** and **asynchronous** interfaces and typed
@@ -15,7 +15,7 @@ request/response models generated from the official `openapi.json` spec.
 ## Installation
 
 ```bash
-pip install smartbill-sdk
+pip install smartbill-rest-sdk
 ```
 
 From source (development):

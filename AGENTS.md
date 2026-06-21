@@ -3,7 +3,7 @@
 **Generated:** 2026-06-21
 
 ## OVERVIEW
-Project: **smartbill-sdk**
+Project: **smartbill-rest-sdk** (import name `smartbill_sdk`)
 Stack: Python ≥ 3.11, `httpx>=0.27`, `pydantic>=2.6`; build backend `hatchling`; dependency/
 dev env managed with `uv`; tests with `pytest` + `pytest-asyncio` + `respx`.
 

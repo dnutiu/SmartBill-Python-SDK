@@ -1,17 +1,17 @@
 ---
 name: smartbill-email
-description: Send SmartBill documents (invoices/proformas) by email via smartbill-sdk. POST /document/send, base64 subject/body, sync and async.
+description: Send SmartBill documents (invoices/proformas) by email via smartbill-rest-sdk. POST /document/send, base64 subject/body, sync and async.
 ---
 
 # SmartBill Email (document/send)
 
 Email an existing SmartBill invoice or proforma to recipients using the
-`smartbill-sdk` Python package. Sync and async supported.
+`smartbill-rest-sdk` Python package (import as `smartbill_sdk`). Sync and async supported.
 
 ## Setup
 
 ```bash
-pip install smartbill-sdk
+pip install smartbill-rest-sdk
 ```
 
 ```python
