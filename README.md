@@ -81,6 +81,22 @@ asyncio.run(main())
 Invoices, Proformas, Payments (incl. chitanta & bon fiscal), E-mail,
 Taxes, Series, Stocks. See `smartbill_sdk/services/` for the full list.
 
+## Agent skills
+
+This repo ships ready-to-import [pi](https://github.com/earendil-works/pi-coding-agent)
+**skills** under [`skills/`](skills/) that teach coding agents how to use the
+SDK. Each `SKILL.md` is a self-contained, copy-pasteable guide for one area of
+the API:
+
+| Skill                | Covers                                                                  |
+|----------------------|-------------------------------------------------------------------------|
+| `smartbill-invoices` | Invoices & proformas/estimates: create, storno, cancel, restore, PDF, payment status |
+| `smartbill-payments` | Payments & fiscal receipts (`bon fiscal`): `POST /payment`, payment types, mixed cash/card, fiscal-printer text, delete |
+| `smartbill-email`    | Emailing a document (`POST /document/send`): base64 subject/body, invoice/proforma |
+
+See [`skills/README.md`](skills/README.md) for how to import them into a pi
+agent. The runnable scripts in [`examples/`](examples/) accompany these skills.
+
 ## Notes
 
 - The SDK talks JSON by default (`format="json"`); XML is not yet supported.
